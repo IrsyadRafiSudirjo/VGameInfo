@@ -34,7 +34,7 @@ class DetailViewController: UIViewController {
             gameTitleDetail.text = result?.name
             gameReleaseDateDetail.text = result?.released
             gameRatingDetail.text = result?.ratingString
-//            gameDescriptionDetail.text = result?.
+            gameDescriptionDetail.text = result?.updated
         }
 
     }

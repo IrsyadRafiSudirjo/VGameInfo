@@ -21,12 +21,15 @@ struct Results : Codable{
     let name: String
     let rating: Double
     let released: String
+    let updated: String
     
     
    
     var ratingString : String {
         return String(format: "%.1f", rating)
     }
+    
+  
     
    
     

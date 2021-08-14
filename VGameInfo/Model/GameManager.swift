@@ -32,6 +32,7 @@ struct GameManager{
         performRequest(with: urlString)
     }
     
+    
     func performRequest(with urlString : String){
 
         if let url = URL(string: urlString){
