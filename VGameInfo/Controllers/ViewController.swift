@@ -31,6 +31,7 @@ class ViewController: UIViewController , GameManagerDelegate{
 
         
         gameManager.fetchGame()
+        
 
     }
 
@@ -46,6 +47,7 @@ class ViewController: UIViewController , GameManagerDelegate{
     
     func didFailWithError(error: Error) {
         print(error)
+        print("gagal")
     }
     
 }
@@ -79,9 +81,6 @@ extension ViewController: UITableViewDataSource {
 
                     let image = UIImage(data: imageData)
                     DispatchQueue.main.async {
-                        
-                        cell.gameImage.layer.cornerRadius = cell.gameImage.frame.height / 2
-                        cell.gameImage.clipsToBounds = true
                         cell.gameImage.image = image
                     }
                 }

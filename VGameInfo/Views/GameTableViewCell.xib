@@ -18,6 +18,10 @@
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Vd-OE-6IW" userLabel="imageGame">
                         <rect key="frame" x="16" y="8" width="168" height="125.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="168" id="K4h-Pg-oEz"/>
+                            <constraint firstAttribute="height" constant="125.5" id="vkO-eS-jyc"/>
+                        </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uzq-rS-r5u">
                         <rect key="frame" x="16" y="141.5" width="168" height="17"/>
