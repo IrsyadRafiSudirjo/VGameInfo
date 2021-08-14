@@ -11,7 +11,7 @@ import CoreLocation
 
 
 protocol GameManagerDelegate {
-    func didUpdateWeather(_ gameManager : GameManager, gameData: GameModel)
+    func didUpdateGame(_ gameManager : GameManager, gameData: [Results])
     func didFailWithError(error : Error)
 }
 
@@ -29,7 +29,7 @@ struct GameManager{
     }
     
     func performRequest(with urlString : String){
-        
+    
         if let url = URL(string: urlString){
             
             let session = URLSession(configuration: .default)
@@ -43,7 +43,7 @@ struct GameManager{
                 
                 if let safeData = data{
                     if let game = self.parseJSON(safeData){
-                        self.delegate?.didUpdateWeather(self , gameData: game)
+                        self.delegate?.didUpdateGame(self , gameData: game)
                     }
                 }
             }
@@ -55,19 +55,15 @@ struct GameManager{
         }
     }
     
-    func parseJSON(_ gameData : Data) -> GameModel?  {
+    func parseJSON(_ gameData : Data) -> [Results]?  {
     let decoder = JSONDecoder()
         do{
-            let decodedData = try decoder.decode(Game.self, from: gameData)
-            let id = decodedData.results[0].id
-            let background_image = decodedData.results[0].background_image
-            let name = decodedData.results[0].name
-            let rating = decodedData.results[0].rating
-            let released = decodedData.results[0].released
+            let decodedData = try decoder.decode(Game.self, from: gameData).results
+            
 
             
-            let game = GameModel(id: id, background_image: background_image, name: name, rating: rating, released: released)
-            return game
+            
+            return decodedData
             
 //            print(weather.conditionName)
 //            print(weather.temperatureString)
@@ -77,6 +73,8 @@ struct GameManager{
             return nil
         }
     }
+    
+    
     
     
 }
