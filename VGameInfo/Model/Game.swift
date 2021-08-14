@@ -10,15 +10,17 @@ import UIKit
 
 
 
-struct Game {
-    let id: String
-    let background_image: UIImage
-    let name: String
-    let description: String
-    let rating: String
-    let released: String
-    
+
+struct Game : Codable {
+    let results : [Results]
 }
 
+struct Results : Codable{
+    let id: Int
+    let background_image: String
+    let name: String
+    let rating: Double
+    let released: String
+}
 
 

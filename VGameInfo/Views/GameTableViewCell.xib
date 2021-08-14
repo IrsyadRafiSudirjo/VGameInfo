@@ -59,6 +59,12 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="gameDate" destination="Yjv-xc-uiw" id="g1K-3O-oyN"/>
+                <outlet property="gameImage" destination="7Vd-OE-6IW" id="Ccj-7k-ubz"/>
+                <outlet property="gameRating" destination="crL-hV-8b5" id="gNq-NR-R6X"/>
+                <outlet property="gameTitle" destination="uzq-rS-r5u" id="QMA-I8-K3Z"/>
+            </connections>
             <point key="canvasLocation" x="121.73913043478262" y="87.723214285714278"/>
         </tableViewCell>
     </objects>
