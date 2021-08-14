@@ -23,9 +23,13 @@ class ViewController: UIViewController , GameManagerDelegate{
         gameManager.delegate = self
 
         
+        self.navigationItem.title = "Detail Game"
+
         // Menghubungkan heroTableView dengan ke dua metode di bawah
         gameTableView.dataSource = self
             
+        gameTableView.delegate = self
+
         // Menghubungkan berkas XIB untuk HeroTableViewCell dengn heroTableView.
         gameTableView.register(UINib(nibName: "GameTableViewCell", bundle: nil), forCellReuseIdentifier: "GameCell")
 
@@ -99,7 +103,21 @@ extension ViewController: UITableViewDataSource {
     }
     
     
+    
 
 }
 
+extension ViewController: UITableViewDelegate {
+   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // Memanggil View Controller dengan berkas NIB/XIB di dalamnya
+        let detail = DetailViewController(nibName: "DetailViewController", bundle: nil)
+        
+        // Mengirim data hero
+        detail.result = gameList[indexPath.row]
+        
+        // Push/mendorong view controller lain
+        self.navigationController?.pushViewController(detail, animated: true)
+    }
 
+
+}
