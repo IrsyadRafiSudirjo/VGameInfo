@@ -17,16 +17,17 @@ protocol GameManagerDelegate {
 
 
 struct GameManager{
-   // let gameURL = "https://api.rawg.io/api/games?key=982f3178fb6a49b4b397fe36beffcaeb"
+    
+    
+    
     let gameURL = "https://api.rawg.io/api/games?page_size=10&key=982f3178fb6a49b4b397fe36beffcaeb"
-
+    
     let searchGameURL = "https://api.rawg.io/api/games?key=982f3178fb6a49b4b397fe36beffcaeb"
- //   https://api.rawg.io/api/games/3498?key=982f3178fb6a49b4b397fe36beffcaeb
-
-
+    
+    
     
     var delegate : GameManagerDelegate?
-   
+    
     
     func fetchGame() {
         let urlString = "\(gameURL)"
@@ -41,9 +42,9 @@ struct GameManager{
     }
     
     func performRequest(with urlString : String){
-
+        
         if let url = URL(string: urlString){
-
+            
             let session = URLSession(configuration: .default)
             
             
@@ -52,30 +53,29 @@ struct GameManager{
                     self.delegate?.didFailWithError(error: error!)
                     return
                 }
-
+                
                 if let safeData = data{
                     if let game = self.parseJSON(safeData){
                         self.delegate?.didUpdateGame(self , gameData: game)
                     }
                 }
-
+                
             }
             
             
-            //start task
             task.resume()
             
         }
     }
     
     func parseJSON(_ gameData : Data) -> [Results]?  {
-    let decoder = JSONDecoder()
+        let decoder = JSONDecoder()
         do{
             let decodedData = try decoder.decode(Game.self, from: gameData).results
             return decodedData
         }
         catch{
-         delegate?.didFailWithError(error: error)
+            delegate?.didFailWithError(error: error)
             return nil
         }
     }
@@ -87,7 +87,7 @@ struct GameManager{
             return value
         }
     }
-
+    
     
     
     

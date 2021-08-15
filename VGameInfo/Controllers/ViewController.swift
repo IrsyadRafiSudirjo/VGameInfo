@@ -27,12 +27,10 @@ class ViewController: UIViewController , GameManagerDelegate, UITextFieldDelegat
         
         self.navigationItem.title = "Detail Game"
 
-        // Menghubungkan heroTableView dengan ke dua metode di bawah
         gameTableView.dataSource = self
             
         gameTableView.delegate = self
 
-        // Menghubungkan berkas XIB untuk HeroTableViewCell dengn heroTableView.
         gameTableView.register(UINib(nibName: "GameTableViewCell", bundle: nil), forCellReuseIdentifier: "GameCell")
 
         
@@ -100,7 +98,6 @@ extension ViewController: UITableViewDataSource {
 
         if let cell = tableView.dequeueReusableCell(withIdentifier: "GameCell", for: indexPath) as? GameTableViewCell {
             
-            // Menetapkan nilai hero ke view di dalam cell
             let game = gameList[indexPath.row]
             
           
@@ -112,7 +109,6 @@ extension ViewController: UITableViewDataSource {
             func setImage(from url: String) {
                 guard let imageURL = URL(string: url) else { return }
 
-                    // just not to cause a deadlock in UI!
                 DispatchQueue.global().async {
                     guard let imageData = try? Data(contentsOf: imageURL) else { return }
 
@@ -124,9 +120,6 @@ extension ViewController: UITableViewDataSource {
             }
             setImage(from: game.background_image ?? "https://media.rawg.io/media/screenshots/d82/d825bac6643ca4ed5a89e569245ca508.jpg")
             
-            // Kode ini digunakan untuk membuat imageView memiliki frame bound/lingkaran
-            
-
             return cell
         } else {
             return UITableViewCell()
@@ -142,13 +135,10 @@ extension ViewController: UITableViewDataSource {
 
 extension ViewController: UITableViewDelegate {
    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // Memanggil View Controller dengan berkas NIB/XIB di dalamnya
         let detail = DetailViewController(nibName: "DetailViewController", bundle: nil)
         
-        // Mengirim data hero
         detail.result = gameList[indexPath.row]
         
-        // Push/mendorong view controller lain
         self.navigationController?.pushViewController(detail, animated: true)
     }
 

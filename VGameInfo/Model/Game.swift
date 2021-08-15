@@ -24,7 +24,7 @@ struct Results : Codable{
     let updated: String?
     
     
-   
+    
     var ratingString : String {
         return String(format: "%.1f", rating)
     }
