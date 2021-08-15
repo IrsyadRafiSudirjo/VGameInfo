@@ -20,8 +20,9 @@ struct GameManager{
    // let gameURL = "https://api.rawg.io/api/games?key=982f3178fb6a49b4b397fe36beffcaeb"
     let gameURL = "https://api.rawg.io/api/games?page_size=10&key=982f3178fb6a49b4b397fe36beffcaeb"
 
-    let searchGameURL = "https://api.rawg.io/api/games?search=pokemon&key=982f3178fb6a49b4b397fe36beffcaeb&page_size=5"
+    let searchGameURL = "https://api.rawg.io/api/games?key=982f3178fb6a49b4b397fe36beffcaeb"
  //   https://api.rawg.io/api/games/3498?key=982f3178fb6a49b4b397fe36beffcaeb
+
 
     
     var delegate : GameManagerDelegate?
@@ -32,6 +33,12 @@ struct GameManager{
         performRequest(with: urlString)
     }
     
+    
+    func searchGame(query : String)  {
+        let urlString = "\(searchGameURL)&search=\(query)"
+        print(urlString)
+        performRequest(with: urlString)
+    }
     
     func performRequest(with urlString : String){
 
@@ -73,6 +80,14 @@ struct GameManager{
         }
     }
     
+    func nullToNil(value : AnyObject?) -> AnyObject? {
+        if value is NSNull {
+            return nil
+        } else {
+            return value
+        }
+    }
+
     
     
     

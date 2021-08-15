@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController , GameManagerDelegate{
+class ViewController: UIViewController , GameManagerDelegate, UITextFieldDelegate{
    
     
     var gameList : [Results] = []
@@ -16,11 +16,13 @@ class ViewController: UIViewController , GameManagerDelegate{
 
     @IBOutlet weak var gameTableView: UITableView!
     
+    @IBOutlet weak var searchTextField: UITextField!
     var gameManager = GameManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         gameManager.delegate = self
+        searchTextField.delegate = self
 
         
         self.navigationItem.title = "Detail Game"
@@ -52,6 +54,37 @@ class ViewController: UIViewController , GameManagerDelegate{
     func didFailWithError(error: Error) {
         print(error)
         print("gagal")
+    }
+    
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textFieldEdit()
+        return true
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        if textField.text != "" {
+            return true
+        }
+        else {
+            textField.placeholder = "Type City"
+            return false
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        if let city = searchTextField.text{
+            let newString = city.replacingOccurrences(of: " ", with: "%20")
+            gameManager.searchGame(query: newString)
+        }
+        
+        searchTextField.text = ""
+    }
+    
+    func textFieldEdit() {
+        searchTextField.endEditing(true)
+        print(searchTextField.text!)
     }
     
 }
@@ -89,7 +122,7 @@ extension ViewController: UITableViewDataSource {
                     }
                 }
             }
-            setImage(from: game.background_image)
+            setImage(from: game.background_image ?? "https://media.rawg.io/media/screenshots/d82/d825bac6643ca4ed5a89e569245ca508.jpg")
             
             // Kode ini digunakan untuk membuat imageView memiliki frame bound/lingkaran
             

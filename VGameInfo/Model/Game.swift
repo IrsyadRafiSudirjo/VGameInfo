@@ -16,12 +16,12 @@ struct Game : Codable {
 }
 
 struct Results : Codable{
-    let id: Int
-    let background_image: String
-    let name: String
+    let id: Int?
+    let background_image: String?
+    let name: String?
     let rating: Double
-    let released: String
-    let updated: String
+    let released: String?
+    let updated: String?
     
     
    
@@ -30,9 +30,6 @@ struct Results : Codable{
     }
     
   
-    
-   
-    
     
 }
 

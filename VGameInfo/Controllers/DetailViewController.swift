@@ -30,7 +30,7 @@ class DetailViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         if result != nil {
-            setImage(from: result!.background_image)
+            setImage(from: result!.background_image ?? "https://media.rawg.io/media/screenshots/d82/d825bac6643ca4ed5a89e569245ca508.jpg")
             gameTitleDetail.text = result?.name
             gameReleaseDateDetail.text = result?.released
             gameRatingDetail.text = result?.ratingString
