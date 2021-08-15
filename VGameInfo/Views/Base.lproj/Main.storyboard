@@ -100,14 +100,38 @@
         <!--Search-->
         <scene sceneID="Z9s-47-M5a">
             <objects>
-                <viewController id="ZF1-TR-HFz" sceneMemberID="viewController">
+                <viewController id="ZF1-TR-HFz" customClass="SearchViewController" customModule="VGameInfo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NHC-C9-gcz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2h8-GY-6o9">
+                                <rect key="frame" x="16" y="52" width="382" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0d6-Up-ylU">
+                                <rect key="frame" x="0.0" y="86" width="414" height="727"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Orm-9P-gUz"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Orm-9P-gUz" firstAttribute="trailing" secondItem="2h8-GY-6o9" secondAttribute="trailing" constant="16" id="1Om-zV-w1x"/>
+                            <constraint firstItem="0d6-Up-ylU" firstAttribute="top" secondItem="2h8-GY-6o9" secondAttribute="bottom" id="3Mv-Tj-u6w"/>
+                            <constraint firstItem="0d6-Up-ylU" firstAttribute="leading" secondItem="Orm-9P-gUz" secondAttribute="leading" id="Fpm-L4-tHo"/>
+                            <constraint firstItem="2h8-GY-6o9" firstAttribute="top" secondItem="Orm-9P-gUz" secondAttribute="top" constant="8" id="Zlr-Ok-r8F"/>
+                            <constraint firstItem="Orm-9P-gUz" firstAttribute="bottom" secondItem="0d6-Up-ylU" secondAttribute="bottom" id="hla-WJ-guF"/>
+                            <constraint firstItem="2h8-GY-6o9" firstAttribute="leading" secondItem="Orm-9P-gUz" secondAttribute="leading" constant="16" id="mRu-kC-ORX"/>
+                            <constraint firstItem="Orm-9P-gUz" firstAttribute="trailing" secondItem="0d6-Up-ylU" secondAttribute="trailing" id="xQ4-4G-6w0"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Search" selectedImage="magnifyingglass" catalog="system" id="NY4-AY-qX4"/>
+                    <connections>
+                        <outlet property="gameTableView" destination="0d6-Up-ylU" id="pIy-nx-88S"/>
+                        <outlet property="searchTextField" destination="2h8-GY-6o9" id="tIO-Ib-qVV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FKb-WN-nTA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

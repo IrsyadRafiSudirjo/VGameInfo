@@ -19,9 +19,5 @@ struct GameModel : Codable {
     
 }
 
-func fetchDetailGame(_ id : Int) {
-    let detailGameURL = "https://api.rawg.io/api/games/\(id)?key=982f3178fb6a49b4b397fe36beffcaeb"
-    
-}
 
 
