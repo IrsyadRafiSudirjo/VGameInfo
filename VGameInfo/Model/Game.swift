@@ -7,14 +7,9 @@
 
 import UIKit
 
-
-
-
-
 struct Game : Codable {
     let results : [Results]
 }
-
 struct Results : Codable{
     let id: Int?
     let background_image: String?
@@ -23,14 +18,9 @@ struct Results : Codable{
     let released: String?
     let updated: String?
     
-    
-    
     var ratingString : String {
         return String(format: "%.1f", rating)
     }
-    
-  
-    
 }
 
 

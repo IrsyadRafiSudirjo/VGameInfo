@@ -48,6 +48,37 @@
             </objects>
             <point key="canvasLocation" x="1933.3333333333335" y="72.991071428571431"/>
         </scene>
+        <!--Favorite View Controller-->
+        <scene sceneID="MXD-Ib-Yjn">
+            <objects>
+                <viewController id="CxW-ML-tAV" customClass="FavoriteViewController" customModule="VGameInfo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mMJ-r0-AJo">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="y3i-Ed-7ex">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="5Jb-hv-hko"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="y3i-Ed-7ex" firstAttribute="top" secondItem="5Jb-hv-hko" secondAttribute="top" id="bDC-YY-NRo"/>
+                            <constraint firstItem="5Jb-hv-hko" firstAttribute="bottom" secondItem="y3i-Ed-7ex" secondAttribute="bottom" id="gtt-o5-iYx"/>
+                            <constraint firstItem="5Jb-hv-hko" firstAttribute="trailing" secondItem="y3i-Ed-7ex" secondAttribute="trailing" id="hNL-pZ-lyd"/>
+                            <constraint firstItem="y3i-Ed-7ex" firstAttribute="leading" secondItem="5Jb-hv-hko" secondAttribute="leading" id="y9B-Fb-Ypr"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="31b-Zd-oP0"/>
+                    <connections>
+                        <outlet property="favoriteTableView" destination="y3i-Ed-7ex" id="aDb-o8-S0x"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w9P-gM-vc2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2842.0289855072465" y="-630.13392857142856"/>
+        </scene>
         <!--Profile-->
         <scene sceneID="hdr-hf-udc">
             <objects>
@@ -80,7 +111,7 @@
                             <constraint firstItem="JhW-UU-cLC" firstAttribute="top" secondItem="RaH-A3-aAK" secondAttribute="top" constant="50" id="oyc-yO-pxP"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profile" selectedImage="person.fill" catalog="system" id="AAr-pF-Lua"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="person.fill" catalog="system" selectedImage="person.fill" id="AAr-pF-Lua"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NIS-Ad-7GK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -98,6 +129,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="UuK-Ie-Ymj" kind="relationship" relationship="viewControllers" id="uyE-2z-W2D"/>
+                        <segue destination="I9w-Qg-sT3" kind="relationship" relationship="viewControllers" id="bRb-Vu-vGL"/>
                         <segue destination="kux-dG-Knv" kind="relationship" relationship="viewControllers" id="9SP-Qp-kSO"/>
                     </connections>
                 </tabBarController>
@@ -109,7 +141,7 @@
         <scene sceneID="4ZS-xP-nlQ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UuK-Ie-Ymj" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" selectedImage="house.fill" catalog="system" id="ybS-ma-1Xk"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="house.fill" catalog="system" selectedImage="house.fill" id="ybS-ma-1Xk"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="clg-pu-LMC">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -124,11 +156,31 @@
             </objects>
             <point key="canvasLocation" x="1023.1884057971015" y="72.991071428571431"/>
         </scene>
+        <!--Favorite-->
+        <scene sceneID="gvb-uA-Z5L">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="I9w-Qg-sT3" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Favorite" image="suit.heart.fill" catalog="system" id="mIV-FT-KdG"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Tj4-mV-YY8">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="CxW-ML-tAV" kind="relationship" relationship="rootViewController" id="8Vs-q0-8te"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UfW-gb-HcE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1931.8840579710147" y="-630.13392857142856"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Fotomuka" width="461" height="461"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
+        <image name="suit.heart.fill" catalog="system" width="128" height="109"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
