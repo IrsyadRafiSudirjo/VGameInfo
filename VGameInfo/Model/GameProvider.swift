@@ -22,7 +22,6 @@ class GameProvider {
         container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
         container.viewContext.shouldDeleteInaccessibleFaults = true
         container.viewContext.undoManager = nil
-        
         return container
     }()
 
@@ -71,13 +70,13 @@ class GameProvider {
         let taskContext = newTaskContext()
         taskContext.performAndWait {
             if let entity = NSEntityDescription.entity(forEntityName: "FavoriteGame", in: taskContext) {
-                let member = NSManagedObject(entity: entity, insertInto: taskContext)
-                    member.setValue(id, forKeyPath: "id")
-                    member.setValue(name, forKeyPath: "name")
-                    member.setValue(background_image, forKeyPath: "background_image")
-                    member.setValue(rating, forKeyPath: "rating")
-                    member.setValue(released, forKeyPath: "released")
-                    member.setValue(updated, forKeyPath: "updateDate")
+                let gamer = NSManagedObject(entity: entity, insertInto: taskContext)
+                gamer.setValue(id, forKeyPath: "id")
+                gamer.setValue(name, forKeyPath: "name")
+                gamer.setValue(background_image, forKeyPath: "background_image")
+                gamer.setValue(rating, forKeyPath: "rating")
+                gamer.setValue(released, forKeyPath: "released")
+                gamer.setValue(updated, forKeyPath: "updateDate")
                     do {
                         try taskContext.save()
                         completion()
@@ -97,8 +96,8 @@ class GameProvider {
             )
             fetchRequest.fetchLimit = 1
             do {
-                let lastMember = try taskContext.fetch(fetchRequest)
-                if let member = lastMember.first, let position = member.value(forKeyPath: "id") as? Int {
+                let lastGamer = try taskContext.fetch(fetchRequest)
+                if let gamer = lastGamer.first, let position = gamer.value(forKeyPath: "id") as? Int {
                     completion(position)
                 } else {
                     completion(0)

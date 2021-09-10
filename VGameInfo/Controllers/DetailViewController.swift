@@ -10,7 +10,7 @@ import UIKit
 class DetailViewController: UIViewController {
     
     private lazy var memberProvider: GameProvider = { return GameProvider() }()
-    var memberId: Int = 0
+    var gamerId: Int = 0
 
     @IBOutlet weak var gameImageDetail: UIImageView!
     @IBOutlet weak var gameTitleDetail: UILabel!
@@ -22,19 +22,17 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if result != nil {
-            memberId = result?.id ?? 0
+            gamerId = result?.id ?? 0
             setImage(from: result!.background_image ?? "https://media.rawg.io/media/screenshots/d82/d825bac6643ca4ed5a89e569245ca508.jpg")
             gameTitleDetail.text = result?.name
             gameReleaseDateDetail.text = result?.released
             gameRatingDetail.text = result?.ratingString
             gameDescriptionDetail.text = result?.updated
-            memberProvider.getMaxId(gameId: self.memberId) { id in
-                if id == self.memberId{
-                    print("Halo id \(id) memberid\(self.memberId)")
+            memberProvider.getMaxId(gameId: self.gamerId) { id in
+                if id == self.gamerId{
                     self.favoriteButton.setTitle("Unfavorite", for: .normal)
                 }
                 else{
-                    print("hello id \(id) memberid\(self.memberId)")
                     self.favoriteButton.setTitle("Favorite", for: .normal)
                 }
             }
@@ -54,12 +52,12 @@ class DetailViewController: UIViewController {
     
     @IBAction func favoriteButtonPressed(_ sender: UIButton) {
         if result != nil {
-            memberProvider.getMaxId(gameId: self.memberId) { id in
-            if id == self.memberId {
+            memberProvider.getMaxId(gameId: self.gamerId) { id in
+            if id == self.gamerId {
                 self.favoriteButton.setTitle("favorite", for: .normal)
                 self.memberProvider.deleteGame(id) {
                     DispatchQueue.main.async {
-                        let alert = UIAlertController(title: "Successful", message: "Member deleted.", preferredStyle: .alert)
+                        let alert = UIAlertController(title: "Successful", message: "Game deleted.", preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
                             self.navigationController?.popViewController(animated: true)
                         })
@@ -69,10 +67,9 @@ class DetailViewController: UIViewController {
             }
             else {
                 self.favoriteButton.setTitle("Unfavorite", for: .normal)
-                print("NO memberId \(self.memberId) id \(id)")
                 self.memberProvider.createGame(self.result?.id ?? 0,self.result?.name ?? "13", self.result!.background_image ?? "https://media.rawg.io/media/screenshots/d82/d825bac6643ca4ed5a89e569245ca508.jpg", self.result?.rating ?? 0.0,  self.result?.released ?? "11", self.result?.updated ?? "12") {
                 DispatchQueue.main.async {
-                 let alert = UIAlertController(title: "Successful", message: "New member created.", preferredStyle: .alert)
+                 let alert = UIAlertController(title: "Successful", message: "New Game added to favorite.", preferredStyle: .alert)
                                     
                     alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
                     self.navigationController?.popViewController(animated: true)

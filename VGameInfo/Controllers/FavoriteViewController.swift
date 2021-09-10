@@ -21,10 +21,10 @@ class FavoriteViewController: UIViewController, UITableViewDelegate {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        loadMembers()
+        loadGames()
     }
     
-    private func loadMembers() {
+    private func loadGames() {
         self.gameProvider.getAllGames { result in
                DispatchQueue.main.async {
                    self.games = result
