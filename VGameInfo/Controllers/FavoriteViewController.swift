@@ -16,7 +16,6 @@ class FavoriteViewController: UIViewController, UITableViewDelegate {
     @IBOutlet weak var favoriteTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("hello")
         setupView()
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -27,8 +26,7 @@ class FavoriteViewController: UIViewController, UITableViewDelegate {
     private func loadGames() {
         self.gameProvider.getAllGames { result in
                DispatchQueue.main.async {
-                   self.games = result
-                print(result)
+                self.games = result
                    self.favoriteTableView.reloadData()
                }
            }

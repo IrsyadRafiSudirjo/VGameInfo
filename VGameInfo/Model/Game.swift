@@ -7,10 +7,10 @@
 
 import UIKit
 
-struct Game : Codable {
+struct Game: Codable {
     let results : [Results]
 }
-struct Results : Codable{
+struct Results: Codable{
     let id: Int?
     let background_image: String?
     let name: String?

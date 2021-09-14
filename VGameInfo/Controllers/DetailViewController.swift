@@ -28,7 +28,7 @@ class DetailViewController: UIViewController {
             gameReleaseDateDetail.text = result?.released
             gameRatingDetail.text = result?.ratingString
             gameDescriptionDetail.text = result?.updated
-            memberProvider.getMaxId(gameId: self.gamerId) { id in
+            memberProvider.checkGameExist(gameId: self.gamerId) { id in
                 if id == self.gamerId{
                     self.favoriteButton.setTitle("Unfavorite", for: .normal)
                 }
@@ -52,7 +52,7 @@ class DetailViewController: UIViewController {
     
     @IBAction func favoriteButtonPressed(_ sender: UIButton) {
         if result != nil {
-            memberProvider.getMaxId(gameId: self.gamerId) { id in
+            memberProvider.checkGameExist(gameId: self.gamerId) { id in
             if id == self.gamerId {
                 self.favoriteButton.setTitle("favorite", for: .normal)
                 self.memberProvider.deleteGame(id) {

@@ -87,7 +87,7 @@ class GameProvider {
             }
         }
     
-    func getMaxId(gameId: Int,completion: @escaping(_ maxId: Int) -> Void) {
+    func checkGameExist(gameId: Int,completion: @escaping(_ maxId: Int) -> Void) {
         let taskContext = newTaskContext()
         taskContext.performAndWait {
             let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "FavoriteGame")
